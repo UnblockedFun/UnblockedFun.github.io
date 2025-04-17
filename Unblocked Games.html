@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <a href="https://forms.gle/oKEPPThmo3iUuN3L8" class="link" id="hyperlink" target="_blank">Report Problem Or Suggest Game to Add!</a>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Unblocked Games</title>
@@ -31,7 +30,7 @@
       margin: 0;
       font-family: sans-serif;
       background-image: url("https://imgcdn.stablediffusionweb.com/2024/10/1/3094309b-c369-4bc0-9adb-ad7a326485ba.jpg");
-    }
+      overflow: hidden; }
 
     header {
       background: #007fff;
@@ -262,39 +261,65 @@
 		<img src="https://fridaynight-funkin.github.io/imgs/smash-karts.png" alt="Smash Karts">
 		<h3>Smash Karts</h3>
 	</div>
+  <div class="game-card" onclick="openGame('https://htmlxm.github.io/h/raft-wars/', 'Raft Wars')">
+		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5r-oT16xxNncL3IvjdqcmnmsJVguEWj8i2g&s" alt="Raft Wars">
+		<h3>Raft Wars</h3>
+	</div>
+  <div class="game-card" onclick="openGame('https://htmlxm.github.io/h7/escaping-the-prison/', 'Escaping The Prison')">
+		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaUpyDvHOH66MwhNx48I_9xGnaCgN3ICf8bw&s" alt="Escaping The Prison">
+		<h3>Escaping The Prison</h3>
+	</div>
+  <div class="game-card" onclick="openGame('https://htmlxm.github.io/h9/stack-ball/', 'Stack Ball')">
+		<img src="https://play-lh.googleusercontent.com/3pf26YI4SRN_Uk72hQeHJHbv57xOKOVEThflyjzoM6OegOxEolE8lGCImYz7DC9bv4w" alt="Stack Ball">
+		<h3>Stack Ball</h3>
+	</div>
+  <div class="game-card" onclick="openGame('https://narrow-one.github.io/n6/rocket-soccer-derby/', 'Rocket Soccer Derby/')">
+		<img src="https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=1200,height=1200,fit=cover,f=png/e521bbbf13a6480b60d75421e7edc8d8d0e1edadaccd7d43438864b62a74088a.png" alt="Rocket Soccer Derby">
+		<h3>Rocket Soccer Derby</h3>
+	</div>
   </div>
 
   <script>
+  // Disable scrolling
+  document.body.addEventListener('wheel', function(event) {
+      event.preventDefault();
+    }, { passive: false });
+
+    // Open the game in an about:blank tab with the game URL and title
     function openGame(url, title) {
-      const win = window.open('about:blank');
-      if (!win) return alert("Popup blocked! Allow popups to play.");
+      // Open a new blank tab
+      var newTab = window.open('about:blank', '_blank');
 
-      win.document.title = title;
-      win.document.body.style.margin = '0';
-      win.document.body.style.height = '100vh';
+      // Write the content to the new tab
+      newTab.document.write(`
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+          <title>${title}</title>
+          <style>
+            body {
+              margin: 0;
+              overflow: hidden;
+            }
 
-      const iframe = win.document.createElement('iframe');
-      iframe.style.border = 'none';
-      iframe.style.width = '100%';
-      iframe.style.height = '100%';
-      iframe.src = url;
+            iframe {
+              width: 100vw;
+              height: 100vh;
+              border: none;
+            }
+          </style>
+        </head>
+        <body>
+          <iframe src="${url}" frameborder="0"></iframe>
+        </body>
+        </html>
+      `);
 
-      win.document.body.appendChild(iframe);
+      // Close the document.write stream
+      newTab.document.close();
     }
-    function openGame() {
-      const win = window.open('about:blank');
-    }
-    // Search bar logic
-    const searchBar = document.getElementById('searchBar');
-    const gameCards = document.querySelectorAll('.game-card');
-
-    searchBar.addEventListener('input', () => {
-      const value = searchBar.value.toLowerCase();
-      gameCards.forEach(card => {
-        const title = card.querySelector('h3').textContent.toLowerCase();
-        card.style.display = title.includes(value) ? 'block' : 'none';
-      });
-    });
   </script>
 </body>
 </html>
