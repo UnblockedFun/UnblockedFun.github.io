@@ -281,7 +281,9 @@
 
       win.document.body.appendChild(iframe);
     }
-
+    function openGame() {
+      const win = window.open('about:blank');
+    }
     // Search bar logic
     const searchBar = document.getElementById('searchBar');
     const gameCards = document.querySelectorAll('.game-card');
