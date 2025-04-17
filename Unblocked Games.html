@@ -27,10 +27,12 @@
       overflow: hidden;
     }
     body {
-      margin: 0;
-      font-family: sans-serif;
-      background-image: url("https://imgcdn.stablediffusionweb.com/2024/10/1/3094309b-c369-4bc0-9adb-ad7a326485ba.jpg");
-      overflow: hidden; }
+      overflow-y: auto; /* Enables vertical scrolling */
+  margin: 0;
+  font-family: sans-serif;
+  background-image: url("https://imgcdn.stablediffusionweb.com/2024/10/1/3094309b-c369-4bc0-9adb-ad7a326485ba.jpg");
+  background-size: cover; /* Optional: Makes the background scale nicely */
+  background-attachment: fixed; }
 
     header {
       background: #007fff;
@@ -280,11 +282,6 @@
   </div>
 
   <script>
-  // Disable scrolling
-  document.body.addEventListener('wheel', function(event) {
-      event.preventDefault();
-    }, { passive: false });
-
     // Open the game in an about:blank tab with the game URL and title
     function openGame(url, title) {
       // Open a new blank tab
